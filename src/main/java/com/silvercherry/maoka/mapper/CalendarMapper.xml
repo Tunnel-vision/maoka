@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.silvercherry.maoka.mapper.CalendarMapper">
+    <resultMap id="BaseResultMap" type="com.silvercherry.maoka.dao.domain.Calendar">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="sid" property="sid" jdbcType="VARCHAR"/>
+        <result column="tts" property="tts" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="note" property="note" jdbcType="VARCHAR"/>
+        <result column="love" property="love" jdbcType="INTEGER"/>
+        <result column="translation" property="translation" jdbcType="VARCHAR"/>
+        <result column="small_picture" property="small_picture" jdbcType="VARCHAR"/>
+        <result column="picture" property="picture" jdbcType="VARCHAR"/>
+        <result column="caption" property="caption" jdbcType="VARCHAR"/>
+        <result column="dateline" property="dateline" jdbcType="VARCHAR"/>
+        <result column="s_pv" property="s_pv" jdbcType="INTEGER"/>
+        <result column="sp_pv" property="sp_pv" jdbcType="INTEGER"/>
+        <result column="fenxiang_img" property="fenxiang_img" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,sid,tts,content,note,love,translation,small_picture,picture,caption,dateline,s_pv,sp_pv,fenxiang_img
+    </sql>
+
+    <select id="getCalendarBySelective" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from calendar
+        where dateline = #{date}
+    </select>
+
+
+</mapper>
+
+
